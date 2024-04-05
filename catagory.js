@@ -106,3 +106,13 @@ function showNews(newses) {
   // stop spinner
   toggleSpinner(false);
 }
+
+// creat news button
+const newsBtn = document.getElementById("newsBtn");
+newsBtn.addEventListener("click", function () {
+  const mainNewsSection = document.getElementById("mainNewsSection");
+  mainNewsSection.classList.remove("d-none");
+  const faqSection = document.getElementById("faqSection");
+  faqSection.textContent = "";
+  console.log("newsbtn clik");
+});
