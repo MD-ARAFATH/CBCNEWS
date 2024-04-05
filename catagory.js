@@ -170,3 +170,11 @@ faqBtn.addEventListener("click", function () {
   `;
   faqSection.appendChild(faqDiv);
 });
+
+// News deteils
+const newsDataId = async (id) => {
+  const url = `https://openapi.programming-hero.com/api/news/${id}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  fullNewsFunction(data.data[0]);
+};
