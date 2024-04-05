@@ -19,3 +19,23 @@ const showcat = (catagories) => {
     catContainer.appendChild(catLi);
   }
 };
+
+// fetch news catagory
+function loadNews(catagoriId) {
+  // start loader
+  toggleSpinner(true);
+  const url = `https://openapi.programming-hero.com/api/news/category/${catagoriId}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => showNews(data.data));
+}
+
+// spinner function
+const toggleSpinner = (isloading) => {
+  const loaderSection = document.getElementById("loader");
+  if (isloading) {
+    loaderSection.classList.remove("d-none");
+  } else {
+    loaderSection.classList.add("d-none");
+  }
+};
