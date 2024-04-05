@@ -178,3 +178,39 @@ const newsDataId = async (id) => {
   const data = await res.json();
   fullNewsFunction(data.data[0]);
 };
+
+// show news details
+function fullNewsFunction(theNews) {
+  const ModalParent = document.getElementById("ModalParent");
+  ModalParent.innerHTML = "";
+  const newsModal = document.createElement("div");
+  newsModal.innerHTML = `
+    <div>
+      <img class="img-fluid" src="${theNews.image_url}" alt="" srcset="">
+    </div>
+    <div>
+      <h2>${theNews.title}</h2>
+      <p>${theNews.details}</p>
+    </div>
+
+    <div class=" row  d-flex justify-content-between mt-4 " >
+        <div  class="col-md-6 d-flex align-items-center">
+          <img class="rounded w-5 "  src="${
+            theNews.author.img
+          }" alt="" srcset="">
+          <div class="ps-3" >
+            <h4 class="  " >${
+              theNews.author.name == null ? "No Name info" : theNews.author.name
+            }</h4>
+            <p>${theNews.author.published_date}</p>
+          </div>
+        </div>
+        <div  class="col-md-6 pt-3 ">
+          <h4 class="  ">👁‍🗨 ${
+            theNews.total_view == null ? "No views info" : theNews.total_view
+          } </h4>
+        </div> 
+    </div>
+  `;
+  ModalParent.appendChild(newsModal);
+}
